@@ -21,8 +21,6 @@ import reactor.core.publisher.Mono;
 @RequestMapping("/")
 public class AccountController {
  
-    private static final String SF_API_URL = "https://gsood-svc-dev-ed.my.salesforce.com";
- 
     private WebClient webClient;
  
     public AccountController(WebClient webClient) {
@@ -33,7 +31,7 @@ public class AccountController {
     public String index(@RegisteredOAuth2AuthorizedClient OAuth2AuthorizedClient authorizedClient,
                         @AuthenticationPrincipal OAuth2User oauth2User,
                         Model model) {
-        Mono<String> response = fetchAccounts(authorizedClient);        
+        Mono<String> response = fetchAccounts(authorizedClient, (String) oauth2User.getAttributes().get("profile"));        
         model.addAttribute("response", response);
         model.addAttribute("username", oauth2User.getAttributes().get("name"));
  
@@ -41,10 +39,11 @@ public class AccountController {
     }
     
  
-    private Mono<String> fetchAccounts(OAuth2AuthorizedClient authorizedClient) {
+    private Mono<String> fetchAccounts(OAuth2AuthorizedClient authorizedClient, String queryURI) {
+        queryURI = queryURI.substring(0, queryURI.lastIndexOf("/"));
         return this.webClient
                 .get()
-                .uri(SF_API_URL, uriBuilder ->
+                .uri(queryURI, uriBuilder ->
                         uriBuilder
                                 .path("/services/data/v51.0/query/")
                                 .queryParam("q","SELECT Id, Name FROM Account LIMIT 5")
