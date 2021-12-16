@@ -5,7 +5,7 @@ title: spring-security-oauth2-salesforce
 
 # spring-security-oauth2-salesforce
 
-Spring Boot Security OAuth Authorisation Code (Web Server) with Salesforce
+Spring Boot Security OAuth Authorisation Code Flow (Web Server) with Salesforce using Reactive Stack. If you are looking for same OAuth implementation using Servlet Stack, then check this repo. https://github.com/gouravsood/spring-security-oauth2-salesforce-servlet
 
 Steps to run this project
 
