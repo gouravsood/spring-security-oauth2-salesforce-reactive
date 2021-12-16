@@ -26,9 +26,17 @@ public class AccountController {
     public AccountController(WebClient webClient) {
         this.webClient = webClient;
     }
+    
+    @GetMapping("/")
+    public String index(@RegisteredOAuth2AuthorizedClient OAuth2AuthorizedClient authorizedClient,
+                        @AuthenticationPrincipal OAuth2User oauth2User,
+                        Model model) {
+        model.addAttribute("username", oauth2User.getAttributes().get("name"));
+        return "index";                            
+    }
  
     @GetMapping("/accounts")
-    public String index(@RegisteredOAuth2AuthorizedClient OAuth2AuthorizedClient authorizedClient,
+    public String accounts(@RegisteredOAuth2AuthorizedClient OAuth2AuthorizedClient authorizedClient,
                         @AuthenticationPrincipal OAuth2User oauth2User,
                         Model model) {
         Mono<String> response = fetchAccounts(authorizedClient, (String) oauth2User.getAttributes().get("profile"));        

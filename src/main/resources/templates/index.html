@@ -21,10 +21,13 @@
   <body>
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-6 col-md-offset-3">
+        <div th:if="${response != null}" class="col-md-6 col-md-offset-3">
           <h3 th:text="'SF contacts fetched with user ' + ${username}"></h3>
           <p>Response from Salesforce</p>
-          <p th:text="${response}"></p>
+          <p th:text="'JSON: ' + ${response}" style="white-space: pre"></p>
+        </div>
+        <div th:if="${response == null}" class="col-md-6 col-md-offset-3">
+          <h3 th:text="'Welcome ' + ${username}"></h3>
         </div>
       </div>
     </div>
