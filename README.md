@@ -1,9 +1,9 @@
 ---
-modified: 2021-12-16T12:32:40.978Z
-title: spring-oauth2-salesforce
+modified: 2021-12-16T12:35:33.331Z
+title: spring-security-oauth2-salesforce
 ---
 
-# spring-oauth2-salesforce
+# spring-security-oauth2-salesforce
 
 Spring Boot Security OAuth Authorisation Code (Web Server) with Salesforce
 
