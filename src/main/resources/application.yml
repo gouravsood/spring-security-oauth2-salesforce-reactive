@@ -7,7 +7,7 @@ spring:
             token-name: access_token
             client-id: replace-me
             client-secret: replace-me
-            scope: refresh_token, id, profile
+            scope: api, refresh_token, id, profile
             redirect-uri: http://localhost:8080/login/oauth2/code/salesforce
             authorization-grant-type: authorization_code
         provider:
