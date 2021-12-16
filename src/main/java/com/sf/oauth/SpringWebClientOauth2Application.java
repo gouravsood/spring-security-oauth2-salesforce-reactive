@@ -1,4 +1,4 @@
-package de.rieckpil.blog;
+package com.sf.oauth;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
